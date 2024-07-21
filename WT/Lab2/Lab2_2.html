@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = parseInt(prompt("enter your first no"));
+        let b = parseInt(prompt("enter your second no"));
+        let c=0;
+
+        document.write("prime no b/w "+a+"and"+b+"is<br/>");
+        for(i=a+1;i<b;i++){
+            for(j=2;j<=i/2;j++){
+                if(i%j==0){
+                    c = c+1;
+                }
+            }
+            if(c==0){
+                document.write(i+" ")
+            }
+            c=0;
+        }
+    </script>
+</body>
+</html>

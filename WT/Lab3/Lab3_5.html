@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let a = [];
+         let n = parseInt(prompt("enter size of array"));
+
+         for(i=0;i<n;i++){
+            a[i] = prompt("enter your word");
+         }
+
+         let find = prompt("enter your word for find index");
+
+         
+         for(i=0;i<a.length;i++){
+            // contains ni jagya e includes
+            if(a[i].includes(find)){
+                document.write("our word at index"+i);
+            }
+         }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let a = [];
+        let n = parseInt(prompt("enter size of array"));
+       
+        for(i=0;i<n;i++){
+            a[i] = parseInt(prompt("enter a["+i+"]"));
+        }
+
+        
+
+        for(i=0;i<n-1;i++){
+            let min = a[i];
+            let minindex = i;
+            for(j=i+1;j<n;j++){
+                if(min>a[j]){
+                    min = a[j];
+                    minindex = j;
+                }
+            }
+            if(minindex!=i){
+                a[minindex] = a[i];
+                a[i] = min;
+            }
+        }
+
+
+        document.writeln("arrsy in assending order is: ");
+        for(i=0;i<n;i++){
+            document.writeln(a[i]);
+        }
+
+    </script>
+</body>
+</html>

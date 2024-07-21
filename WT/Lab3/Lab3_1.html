@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = [];
+
+        let n = prompt("enter size of array");
+
+        for(i=0;i<n;i++){
+            a[i] = parseInt(prompt("enter b["+i+"]"));
+        }
+
+        let max = a[0];
+        let index;
+        for(i=1;i<n;i++){
+           if(max<a[i]){
+            max = a[i];
+            index = i;
+           }
+        }
+
+        document.write("max no in array is b["+index+"]:"+max);
+        
+    </script>
+</body>
+</html>

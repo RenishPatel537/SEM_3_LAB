@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = parseInt(prompt("enter your two digit no"));
+        
+        let b = parseInt(a%10);//3
+       // document.write(b+" d  ");
+     
+        //document.write(b)
+
+        let sum = 0;
+        while(a!=0){
+            let i=a%10
+            sum = sum*10 + i;
+            a=parseInt(a/10);
+        }
+
+        //document.write(sum);
+
+        let c = parseInt(sum%10);//2
+        //document.write(c);
+
+        let n = 1;
+        for(i=1;i<=b;i++){
+            n = n*c;
+        }
+
+        document.write(n);
+
+    </script>
+</body>
+</html>

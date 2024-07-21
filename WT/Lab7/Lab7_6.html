@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a,b,rest;
+        a=10;
+        b=20;
+        console.log(a);
+        console.log(b);
+
+         [a,b,...rest] = [10,20,30,40,50];
+
+         console.log(rest);
+
+         let obj1 = {
+            tonystark : 'ironman',
+            work : 'wepon compny'
+         }
+         let c =10;
+          let obj2 = [c,obj1];
+
+          console.log(obj2);
+
+          [c,...rest1] = obj2;
+          console.log(rest1);
+          console.log(obj2);
+    </script>
+</body>
+</html>

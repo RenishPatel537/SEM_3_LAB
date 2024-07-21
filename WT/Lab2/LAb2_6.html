@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const a = {
+            "9":"nine",
+            "8":"eight",
+            "7":"seven",
+            "6":"six",
+            "5":"five",
+            "4":"four",
+            "3":"three",
+            "2":"two",
+            "1":"one",
+
+            "11":"eleven",
+            "12":"twelve",
+            "13":"thirteen",
+            "14":"fourteen",
+            "15":"fifteen",
+            "16":"sixteen",
+            "17":"seventeen",
+            "18":"eigteen",
+            "19":"nineteen",
+
+            "10":"ten",
+            "20":"twenty",
+            "30":"thirty",
+            "40":"fourty",
+            "50":"fifty",
+            "60":"sixty",
+            "70":"seventy",
+            "80":"eighty",
+            "90":"ninety",
+            
+        }
+
+        let s = parseInt(prompt("enter your no b/w 0 to 999"));
+
+
+        while(s<0 || s>999){
+            s = prompt("enter valid no b/w 0 and 999");
+        }
+
+        let b = s%100;
+
+
+        
+       document.writeln(a[parseInt(s/100)]+" hundred "+a[parseInt(b/10)+"0"]+""+a[parseInt(b%10)]);
+        document.write(b%10);
+        
+        if(s>=100){
+           if(0<=parseInt(s%100)<=19){
+            document.write(a[parseInt(s/100)]+" hundred "+a[parseInt(s%100)]);
+           }
+           else{
+            if((b%10)==0){
+                document.write(a[parseInt(s/100)]+" hundred "+a[b]);
+            }
+            if((b%10)!=0){
+                
+                document.write(a[parseInt(s/100)]+" hundred "+a[parseInt(b/10)+"0"]+""+a[parseInt(b%10)]);
+            }
+           }
+        }
+
+        
+
+        if(s<100){
+            if(s<=19 || s%10==0){
+                document.write(a[s]);
+            }
+
+            else{
+               document.write(a[parseInt(s/10)+"0"]+a[parseInt(s%10)]);
+            }
+        }
+        
+
+    </script>
+</body>
+</html>

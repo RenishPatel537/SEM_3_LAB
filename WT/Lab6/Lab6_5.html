@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="color"/>
+    <input type="text" id="backgroundColor"/>
+    <input type="text" id="border"/>
+    <input type="text" id="position"/>
+    <input type="text" id="opacity"/>
+    <input type="text" id="width"/>
+    <input type="text" id="height"/>
+
+    <div id="div" style="width: 100px; height: 100px;">ABCD</div>
+
+    <button onclick="change()">click</button>
+
+
+    <script>
+        function change(){
+        div = document.getElementById("div");
+        color = document.getElementById("color").vlaue
+        backgroundcolor = document.getElementById("backgroundColor").value
+        border = document.getElementById("border").value
+        position = document.getElementById("position").value
+        opacity = document.getElementById("opacity").value
+        width = document.getElementById("width").value
+        height = document.getElementById("height").value
+
+        div.style.backgroundColor = backgroundcolor;
+        }
+    </script>
+</body>
+</html>
