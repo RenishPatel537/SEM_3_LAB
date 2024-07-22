@@ -171,6 +171,46 @@ Node tail = null;
         System.out.println();    
     }
 
+    public void insertGCD(){
+        Node temp = head;
+        int gcd=0;
+        int n=0;
+
+
+        while (temp.link!=null) {
+            if(temp.data>temp.link.data){
+                n = temp.link.data;
+            }
+            else{
+                n = temp.data;
+            }
+            for(int i=1;i<=n;i++){
+                if(temp.link.data%i==0 && temp.data%i==0){
+                    gcd = i;
+                }
+            }
+
+            Node new_node = new Node(gcd);
+            new_node.link = temp.link;
+            temp.link = new_node;
+            temp = new_node.link;
+        }
+    }
+
+    public void deleteDublicateFromSorted(){
+        Node temp = head;
+
+        while (temp.link!=null) {
+            
+            if(temp.data==temp.link.data){
+                temp.link = temp.link.link;
+            }
+            else{
+                temp = temp.link;
+            }
+        }
+    }
+
     public int countOfNode(){
         int count=0;
         Node temp = head;
