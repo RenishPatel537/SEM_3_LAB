@@ -13,6 +13,11 @@ const server = http.createServer((req,res)=>{
         //console.log(data);
         res.end(data.toString());
     }
+
+    else{
+        let a = req.url.split("/");
+        res.end("hello from "+a[a.length-1]);
+    }
 });
 
 const port = 3000;

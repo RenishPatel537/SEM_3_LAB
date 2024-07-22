@@ -68,6 +68,49 @@ class CircularLL{
         }
     }
 
+    public CircularLL splitInTOHalves(){
+        Node temp = head;
+        Node temp2 = null;
+        int n = countNode()/2;
+        System.out.println(n+"from n");
+        int n1 = 1;
+        //int n1 = n+1;
+        CircularLL cl = new CircularLL();
+        while (n1<=n) {
+            temp = temp.link;
+            n++;
+        }
+        //temp2 = temp.link;
+        //temp.link = head;
+        //tail = temp;
+        while(temp!=tail){
+            cl.insertNodeAtLast(temp.data);
+            temp = temp.link;
+            System.out.println("hi");
+        }
+        cl.insertNodeAtLast(temp.data);
+
+
+        temp = head;
+        while (n1<n) {
+            temp = temp.link;
+        }
+        tail = temp;
+        tail.link = head;
+        return cl;
+    }
+
+    public int countNode(){
+        Node temp = head;
+        int count=0;
+        while (temp!=tail) {
+            count++;
+            temp = temp.link;
+        }
+        count++;
+        return count;
+    }
+
     public void display(){
         System.out.println("node of link list");
         Node temp = head;
