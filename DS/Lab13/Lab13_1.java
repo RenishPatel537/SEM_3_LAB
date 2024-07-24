@@ -70,15 +70,15 @@ class CircularLL{
 
     public CircularLL splitInTOHalves(){
         Node temp = head;
-        Node temp2 = null;
+        //Node temp2 = null;
         int n = countNode()/2;
-        System.out.println(n+"from n");
+       // System.out.println(n+"from n");
         int n1 = 1;
         //int n1 = n+1;
-        CircularLL cl = new CircularLL();
+       CircularLL cl = new CircularLL();
         while (n1<=n) {
             temp = temp.link;
-            n++;
+            n1++;
         }
         //temp2 = temp.link;
         //temp.link = head;
@@ -86,14 +86,16 @@ class CircularLL{
         while(temp!=tail){
             cl.insertNodeAtLast(temp.data);
             temp = temp.link;
-            System.out.println("hi");
+            //System.out.println("hi");
         }
         cl.insertNodeAtLast(temp.data);
 
 
         temp = head;
+        n1 = 1;
         while (n1<n) {
             temp = temp.link;
+            n1++;
         }
         tail = temp;
         tail.link = head;
@@ -119,6 +121,7 @@ class CircularLL{
             temp = temp.link;
         }
         System.out.print(temp.data+" ");
+        System.out.println();
     }
 }
 
