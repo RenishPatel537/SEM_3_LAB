@@ -19,6 +19,7 @@ public class Lab13_5 {
         s.AddSong("mocking.wav");
         s.AddSong(filepath);
         s.AddSong(filepath);
+        s.AddSong("interstellar.wav");
 
         //s.playMusic(filepath);
         //System.out.println(s.clip);
@@ -41,7 +42,7 @@ public class Lab13_5 {
             else if(command.equals("next")){
                 s.playNextSong();
             }
-            else if (command.equals("privious")) {
+            else if (command.equals("previous")) {
                 s.playPriviousSong();
             }
              else if (!command.equals("exit")) {
@@ -70,6 +71,8 @@ class Song {
             else{
                 sn.lptr = tail;
                 tail.rptr = sn;
+                tail = sn;
+                head.lptr = sn;
                 sn.rptr = head;
             }
         }
@@ -104,13 +107,15 @@ class Song {
     }
 
     public void playNextSong() throws Exception{
-        temp.clip.close();
+        //temp.clip.close();
+        pauseMusic();
         temp = temp.rptr;
         playMusic();
     }
 
     public void playPriviousSong() throws Exception{
-        temp.clip.close();
+        // temp.clip.close();
+        pauseMusic();
         temp = temp.lptr;
         playMusic();
     }
