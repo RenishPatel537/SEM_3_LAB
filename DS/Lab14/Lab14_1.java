@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 class TreeNode{
     int data;
     TreeNode llink;
@@ -12,41 +15,43 @@ class TreeNode{
 
 class Tree{
     TreeNode root = null;
-    public void insert(int data){
-        TreeNode temp = root;
-        TreeNode new_node = new TreeNode(data);
-        if(root==null){
-            root = new_node;
-            return;
-        }
+    
+    public void createTreeFromArray(int [] a,int index){
+       TreeNode temp = root;
 
-        while (true) {
-            if(temp.llink==null){
-                temp.llink = new_node;
-                return;
-            }
-            else if (temp.rlink==null) {
-                temp.rlink = new_node;
-                return;
-            }
-            else if(temp.llink.llink==null || temp.llink.rlink==null){
-                temp = temp.llink;
-            }
-            else if (temp.llink.llink==null || temp.llink.rlink==null) {
-                temp = temp.rlink;
-            }
-        }
+       if(root==null){
+        temp=root = new TreeNode(a[index]);
+       }
+
+       Queue<TreeNode> q = new LinkedList<TreeNode>();
+       q.add(temp);
+
+       int i = 0;
+
+       while (i<a.length-1) {
+        temp = q.poll();
+
+        temp.llink = new TreeNode(a[i++]);
+        temp.rlink = new TreeNode(a[i++]);
+        q.add(temp.llink);
+        q.add(temp.rlink);
+       }
     }
+
 
     public void preOrder(TreeNode root){
         if(root != null){
-            System.out.println(root.data + " ");
+            System.out.print(root.data + " ");
             // int left = (root.llink == null) ? 0 : root.llink.data;
             // int right = (root.rlink == null) ? 0 : root.rlink.data;
             // System.out.println("left : "+left);
             // System.out.println("right : "+right);
-            preOrder(root.llink);
-            preOrder(root.rlink);
+            if(root.llink != null){
+                preOrder(root.llink);
+            }
+            else if(root.rlink != null){
+                preOrder(root.rlink);
+            }
         }
     }
 }
@@ -54,14 +59,8 @@ class Tree{
 public class Lab14_1{
     public static void main(String[] args) {
         Tree t = new Tree();
-        t.insert(1);
-        t.insert(2);
-        t.insert(3);
-        t.insert(4);
-        t.insert(5);
-        t.insert(6);
-        t.insert(7);
-        t.insert(8);
+        int [] a = {1,2,3,4,5,6,7,8};
+        t.createTreeFromArray(a, 0);
         t.preOrder(t.root);
     }
 }
