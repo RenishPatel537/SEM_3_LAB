@@ -8,7 +8,8 @@ const Faculty = require("./faculty");
 app.use(bodyparser.urlencoded())
 
 mongoose.connect("mongodb+srv://Renish:renish123@cluster0.jkj9k.mongodb.net/university").then(() => {
-    console.log("connect")
+    console.log("connect") // ama connect ma connectionString nakhya pachi /databasenu name nakhvanu atle
+                           // mongo ma db bani jay je upar ma university che
 
     app.get("/faculty", async (req, res) => {
         const data = await Faculty.find()
@@ -18,6 +19,7 @@ mongoose.connect("mongodb+srv://Renish:renish123@cluster0.jkj9k.mongodb.net/univ
     // getbyid
     app.get("/faculty/:id", async (req, res) => {
         const data = await Faculty.findOne({id : req.params.id})
+        //const res = await Faculty.findById(req.params.id); other way
         res.send(data);
     })
 
@@ -53,11 +55,13 @@ mongoose.connect("mongodb+srv://Renish:renish123@cluster0.jkj9k.mongodb.net/univ
 
     app.patch("/faculty/update/:id", async (req, res) => {
         const result = await Faculty.findOneAndUpdate({ id: req.params.id }, req.body);
+       // const result = await Faculty.findByIdAndUpdate(req.params.id,req.body); other way
         res.send(result)
     })
 
     app.delete("/faculty/delete/:id", async (req, res) => {
         const result = await Faculty.findOneAndDelete({ id: req.params.id });
+       // const res = await Faculty.findByIdAndDelete(req.params.id);   other way
         res.send(result)
     })
 
