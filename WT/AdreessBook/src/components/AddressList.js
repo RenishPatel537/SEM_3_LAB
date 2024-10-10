@@ -132,17 +132,16 @@ return (
     <ul>
         {addresses.map((address) => (
         <div className='container border border-dark rounded m-2 p-2 text-right' key={address._id}>
-            <h5>Name : {address.name}</h5>
-            <h5>Email : {address.email}</h5>
-            <h5>Contact : {address.contact}</h5>
-            <h5>Address : {address.address}</h5>
-            <h5>id:{address._id}</h5>
+            <h5><label className='me-2 text-success'>Name :</label> {address.name}</h5>
+            <h5><label className='me-2 text-success'>Email :</label> {address.email}</h5>
+            <h5><label className='me-2 text-success'>Contact :</label> {address.contact}</h5>
+            <h5><label className='me-2 text-success'>Address :</label> {address.address}</h5>
             
             <button
             className="btn btn-danegr"
             onClick={() => handleDelete(address._id)}
             >
-            <h5>< Trash /></h5>
+            <h5 className='text-danger'>< Trash /></h5>
             </button>
 
 
@@ -150,7 +149,7 @@ return (
             type="button" className="btn"
             onClick={() => handleEdit(address)}
             >
-            <h5>< PencilSquare /></h5>
+            <h5 className='text-primary'>< PencilSquare /></h5>
             </button>
 
 
