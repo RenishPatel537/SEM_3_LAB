@@ -2,3 +2,7 @@
 *.txt
 *.json
 node_modules
+WT/React/helloworld/src/App.test.js
+WT/React/helloworld/src/logo.svg
+WT/React/helloworld/src/reportWebVitals.js
+WT/React/helloworld/src/setupTests.js

@@ -72,15 +72,24 @@ class BinarySearchTree{
                 tn = temp.llink;
                 if(tn.llink==null && tn.rlink==null){
                     temp.llink = null;
+                    return;
                 }
                 else if(tn.llink!=null && tn.rlink==null){
                     temp.llink = tn.llink;
+                    return;
                 }
                 else if (tn.llink==null && tn.rlink!=null) {
                     temp.llink = tn.rlink;
+                    return;
                 }
                 else {
-
+                    temp.llink = tn.rlink;
+                    TreeNode t = tn.rlink;
+                    while (t.llink!=null) {
+                        t = t.llink;
+                    }
+                    t.llink = tn.llink;
+                    return;
                 }
             }
             else if (temp.rlink.data==data) {
@@ -88,15 +97,24 @@ class BinarySearchTree{
 
                 if(tn.llink==null && tn.rlink==null){
                     temp.rlink = null;
+                    return;
                 }
                 else if(tn.llink!=null && tn.rlink==null){
                     temp.rlink = tn.llink;
+                    return;
                 }
                 else if (tn.llink==null && tn.rlink!=null) {
                     temp.rlink = tn.rlink;
+                    return;
                 }
                 else {
-                    
+                    temp.rlink = tn.rlink;
+                    TreeNode t = tn.rlink;
+                    while (t.llink!=null) {
+                        t = t.llink;
+                    }
+                    t.llink = tn.llink;
+                    return;
                 }
             }
             else if (data>temp.data) {
@@ -170,6 +188,9 @@ public class Bst {
         bst.insertTreeNode(16, bst.root);
         bst.insertTreeNode(3, bst.root);
         bst.insertTreeNode(6, bst.root);
+
+        bst.delete(15);
+
         bst.preOrder(bst.root);
         System.out.println();
         TreeNode tn = bst.search(3, bst.root);

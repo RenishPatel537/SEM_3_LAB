@@ -22,7 +22,6 @@ class AvlTree{
         if(root==null){
             TreeNode tn = new TreeNode(data);
             root = tn;
-            maxleval = tn.leval;
             return;
         }
         else if(data == temp.data){
@@ -41,9 +40,10 @@ class AvlTree{
                 if(temp.rlink==null){
                     TreeNode tn = new TreeNode(data);
                     temp.rlink = tn;
-                    tn.leval = temp.leval + 1;
-                    maxleval = tn.leval;
-                    flag = false;
+                    // tn.leval = temp.leval + 1;
+                    // maxleval = tn.leval;
+                    // flag = false;
+                    break;
                 }
                 temp = temp.rlink;
             }
@@ -51,9 +51,10 @@ class AvlTree{
                 if(temp.llink==null){
                     TreeNode tn = new TreeNode(data);
                     temp.llink = tn;
-                    tn.leval = temp.leval + 1;
-                    maxleval = tn.leval;
-                    flag = false;
+                    // tn.leval = temp.leval + 1;
+                    // maxleval = tn.leval;
+                    // flag = false;
+                    break;
                 }
                 temp = temp.llink;
             }
@@ -109,51 +110,164 @@ class AvlTree{
     public void rotation(int data){
         TreeNode cnode = findCriticalNode(data);
 
+        if(cnode==null){
+            return;
+        }
+
         if(cnode.data<data){
             if(cnode.rlink.data<data){
-                // call llratation
+                leftRotate(cnode);
             }
             if(cnode.rlink.data>data){
-                // call rlratation
+                RLRotation(cnode);
             }
         }
 
         if(cnode.data>data){
             if(cnode.llink.data<data){
-                // call lrrotaion
+                LRRotation(cnode);
             }
             if(cnode.llink.data>data){
-                // call rrratation
+                rightRotation(cnode);
             }
         }
     }
 
     public void leftRotate(TreeNode tn){
         TreeNode x = tn.rlink;
+        TreeNode temp = x.llink;
         x.llink = tn;
-        tn.rlink = x.rlink;
+        tn.rlink = temp;
+
+        TreeNode a = search(tn.data);
+
+        if(a==null){
+            root = x;
+            return;
+        }
+
+        if(tn.data<a.data){
+            a.llink = x;
+        }
+        else{
+            a.rlink = x;
+        }
     }
 
     public void rightRotation(TreeNode tn){
         TreeNode x = tn.llink;
+        TreeNode temp = x.rlink;
         x.rlink = tn;
-        tn.llink = x.llink;
+
+        tn.llink = temp;
+
+        TreeNode a = search(tn.data);
+
+        if(a==null){
+            root = x;
+            return;
+        }
+
+        if(tn.data<a.data){
+            a.llink = x;
+        }
+        else{
+            a.rlink = x;
+        }
     }
 
     public void LRRotation(TreeNode tn){
+        TreeNode x = tn.llink;
+        TreeNode y = x.rlink;
+        tn.llink = y;
+        y.llink = x;
 
+        TreeNode z = y.rlink;
+        y.rlink = tn;
+        tn.llink = z;
+
+        TreeNode a = search(tn.data);
+
+        if(a==null){
+            root = y;
+            return;
+        }
+
+        if(tn.data<a.data){
+            a.llink = y;
+        }
+        else{
+            a.rlink = y;
+        }
     }
 
-    // public TreeNode RLRotation(){
+    public void RLRotation(TreeNode tn){
+        TreeNode x = tn.rlink;
+        TreeNode y = x.llink;
+        x.llink = null;
+        tn.rlink = y;
+        y.rlink = x;
 
-    // }
+        TreeNode z = y.llink;
+        y.llink = tn;
+        tn.rlink = z;
 
+        TreeNode a = search(tn.data);
+
+        if(a==null){
+            root = y;
+            return;
+        }
+
+        if(tn.data<a.data){
+            a.llink = y;
+        }
+        else{
+            a.rlink = y;
+        }
+    }
+
+    public TreeNode search(int data){
+        TreeNode temp = root;
+
+        while (temp.llink!=null) {
+            if(temp.llink.data == data || temp.rlink.data==data){
+                return temp;
+            }
+            else if(temp.data<data){
+                temp = temp.rlink;
+            }
+            else if(temp.data>data){
+                temp = temp.llink;
+            }
+        }
+        return null;
+    }
+
+    public void preOrder(TreeNode temp){
+        if(temp==null){
+            return;
+        }
+        System.out.println(temp.data);
+        preOrder(temp.llink);
+        preOrder(temp.rlink);
+    }
 
 }
 
 public class Avl {
 
     public static void main(String[] args) {
-        
+        AvlTree avl = new AvlTree();
+        avl.insertNode(64);
+        avl.insertNode(1);
+        avl.insertNode(44);
+        avl.insertNode(26);
+        avl.insertNode(13);
+        avl.insertNode(110);
+        avl.insertNode(98);
+        avl.insertNode(95);
+
+        avl.preOrder(avl.root);
     }
 }
