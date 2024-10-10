@@ -16,6 +16,7 @@ useEffect(() => {
 
 //handle for deleting address
 const handleDelete = (addressId) => {
+    console.log(addressId);
     axios
     .delete(`http://localhost:5000/api/addresses/${addressId}`)
     .then(() => {
@@ -135,6 +136,7 @@ return (
             <h5>Email : {address.email}</h5>
             <h5>Contact : {address.contact}</h5>
             <h5>Address : {address.address}</h5>
+            <h5>id:{address._id}</h5>
             
             <button
             className="btn btn-danegr"

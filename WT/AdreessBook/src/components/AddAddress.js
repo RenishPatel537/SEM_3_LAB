@@ -19,8 +19,7 @@ const handleChange = (e) => {
 };
 
 //handle for creating new address
-const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = () => {
     axios.post('http://localhost:5000/api/addresses', formData).then(() => {
     nav('/');
     });
@@ -30,7 +29,7 @@ return (
     <div className='container container-fluid min-vh-100 justify-content-center'>
     <h2 className='display-2 text-center'>Add Address</h2>
     < Navigation />
-        <form onSubmit={handleSubmit}>
+        <div>
         <div className='form-group'>
             <label>Name:</label>
             <input type="text" name="name" onChange={handleChange} required className='form-control'/>
@@ -48,9 +47,9 @@ return (
             <input type="text" name="address" onChange={handleChange} required className='form-control'/>
         </div>
         <div>
-            <button type="submit" className='btn btn-primary p-2 m-2'>Add Address</button>
+            <button onClick={()=>handleSubmit()} className='btn btn-primary p-2 m-2'>Add Address</button>
         </div>
-        </form>
+        </div>
     </div>
 );
 };

@@ -77,8 +77,9 @@ try {
 
 //Delete route for deleting address with specified id
 app.delete('/api/addresses/:id', async (req, res) => {
+    console.log(req.params.id);
 try {
-    await Address.findOneAndDelete(req.params.id);
+    await Address.findByIdAndDelete(req.params.id);
     res.json({ message: 'Address deleted' });
 } catch (err) {
     res.status(500).json({ error: err.message });
